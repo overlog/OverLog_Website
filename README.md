@@ -1,33 +1,16 @@
-# overlog_website
+# OverLOG Website
 
 You need to install npm in order to build project on your local machine.<br/>
 https://www.npmjs.com/
 
-## Project setup
-```
-npm install
-```
+Project Setup:<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;Clone this repo<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;cd in to the cloned repo<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;npm install<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;npm run serve<br/>
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+Building the project:<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;npm run build
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
-=======
+This project uses MDBVUE (Metarial Design for Bootstrap) UI KIT.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;https://mdbootstrap.com/docs/vue/
