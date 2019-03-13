@@ -1,5 +1,8 @@
 # overlog_website
 
+You need to install npm in order to build project on your local machine.<br/>
+https://www.npmjs.com/
+
 ## Project setup
 ```
 npm install
