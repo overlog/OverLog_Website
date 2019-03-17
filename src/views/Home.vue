@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <Header></Header>
-
+    
     <Footer></Footer>
   </div>
 </template>
@@ -11,7 +11,6 @@
 import Header from '@/components/Header.vue'
 import Footer from '@/components/Footer.vue'
 import axios from 'axios';
-
 //const API_URL = 'https://api.coindesk.com/v1/bpi/currentprice.json';
 //const data = axios.get(API_URL).then(response => response.data);
 
