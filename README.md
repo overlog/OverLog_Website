@@ -17,4 +17,7 @@ This project uses:<br/><br/>
 &nbsp;&nbsp;&nbsp;&nbsp;https://mdbootstrap.com/docs/vue/<br/><br/>
 
 &nbsp;&nbsp;Vue-ApexChart A Vue chart wrapper for ApexCharts.js<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;https://apexcharts.com/docs/vue-charts/<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;https://apexcharts.com/docs/vue-charts/<br/><br/>
+
+&nbsp;&nbsp;Vue-axios A small wrapper for integrating axios to Vuejs<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;https://www.npmjs.com/package/vue-axios<br/><br/>
