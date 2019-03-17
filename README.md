@@ -12,5 +12,9 @@ Project Setup:<br/>
 Building the project:<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;npm run build
 
-This project uses MDBVUE (Metarial Design for Bootstrap) UI KIT.<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;https://mdbootstrap.com/docs/vue/
+This project uses:<br/><br/>
+&nbsp;&nbsp;MDBVUE (Metarial Design for Bootstrap) UI KIT.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;https://mdbootstrap.com/docs/vue/<br/><br/>
+
+&nbsp;&nbsp;Vue-ApexChart A Vue chart wrapper for ApexCharts.js<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;https://apexcharts.com/docs/vue-charts/<br/>
