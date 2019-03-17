@@ -1,13 +1,24 @@
 <template>
   <div id="app">
-    <div id="nav">
-    </div>
+    <Login></Login>
     <router-view/>
   </div>
 </template>
 
+<script>
+
+import Login from './components/Login'
+
+export default {
+  components: {
+    Login,
+  },
+}
+</script>
+
 <style>
 #app {
+  margin-top: 100px;
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
