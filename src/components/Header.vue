@@ -5,6 +5,8 @@
         <mdb-navbar-nav left>
           <mdb-nav-item to="/" waves-fixed>Home</mdb-nav-item>
           <mdb-nav-item href="/about" waves-fixed>About</mdb-nav-item>
+          <mdb-nav-item href="/developers" waves-fixed>Developers</mdb-nav-item>
+           <mdb-nav-item href="/login" waves-fixed>Login</mdb-nav-item>
         </mdb-navbar-nav>
       </mdb-navbar-toggler>
     </mdb-navbar>

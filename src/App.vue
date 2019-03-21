@@ -1,18 +1,21 @@
 <template>
   <div id="app">
-    <Login></Login>
+    <Header></Header>
     <router-view/>
+    <Footer></Footer>
   </div>
 </template>
 
 <script>
 
-import Login from './components/Login'
+import Header from './components/Header'
+import Footer from './components/Footer'
 
 export default {
   components: {
-    Login,
-  },
+    Header,
+    Footer
+  }
 }
 </script>
 

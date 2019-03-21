@@ -2,6 +2,8 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
 import LineChart from './components/LineChart'
+import Developers from './components/Developers.vue'
+import Login from './components/Login.vue'
 
 Vue.use(Router)
 
@@ -26,6 +28,16 @@ export default new Router({
       path: '/linechart',
       name: 'linechart',
       component: LineChart
-    }
+    },
+    {
+      path: '/developers',
+      name: 'develoers',
+      component: Developers
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: Login  
+    },
   ]
 })
