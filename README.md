@@ -1,7 +1,7 @@
 # OverLOG Website
 
-You need to install npm in order to build project on your local machine.<br/>
-https://www.npmjs.com/
+You need to install node and npm in order to build project on your local machine.<br/>
+https://nodejs.org/en/
 
 Project Setup:<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;Clone the project<br/>
