@@ -1,6 +1,6 @@
 <template>
   <div class="example">
-    <apexchart width="500" type="line" :options="chartOptions" :series="series"></apexchart>
+    <apexchart width="500" type="bar" :options="chartOptions" :series="series"></apexchart>
      <div>
        <button @click="updateChart">Update!</button>
     </div>
@@ -19,37 +19,65 @@ export default {
       chartOptions: {
         plotOptions: {
           bar: {
-            horizontal: true
+            horizontal: false
           }
         },
         xaxis: {
-          categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999]
+          categories: ["Error", "Warning", "Info"]
         }
       },
       series: [{
         name: 'series-1',
-        data: [30, 40, 45, 50, 49, 60, 70, 91]
+        data: [30, 40, 45]
       }]
     }
   },
   methods: {
-      updateChart() {
-        const max = 90;
-        const min = 20;
-        const newData = this.series[0].data.map(() => {
-          return Math.floor(Math.random() * (max - min + 1)) + min
-        })
 
+    fetchlogs() {
+      console.log("...")
+        fetch('http://127.0.0.1:5000/')
+        .then((res) => {return res.json() })
+        .then( (res) => { this.setnums(res) } )
+    },
+
+    setnums(res){
+      var e = 0
+      var i = 0
+      var w = 0
+      var len = Object.keys(res).length
+
+      for (var j = 0; j < len; j++) {
+        if(res[j+1]['type'] == 'i'){
+          i++
+
+        }
+        else if(res[j+1]['type'] == 'e'){
+          e++
+
+        }
+        else if(res[j+1]['type'] == 'w'){
+          w++
+        }
+      }
+      this.series =         this.series = [{
+                data: [e,w,i]
+              }]
+
+    },
+
+
+      updateChart() {
+        this.fetchlogs()
         const colors = ['#008FFB', '#00E396', '#FEB019', '#FF4560', '#775DD0']
 
         // Make sure to update the whole options config and not just a single property to allow the Vue watch catch the change.
         this.chartOptions = {
-          colors: [colors[Math.floor(Math.random()*colors.length)]]
+          colors: ['#FEB019', '#FF4560', '#775DD0'],
+
+
         };
         // In the same way, update the series option
-        this.series = [{
-          data: newData
-        }]
       }
     }
 }
