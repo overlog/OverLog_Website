@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
-import LineChart from './components/LineChart'
+import BoxPlot from './components/BoxPlot'
 import Developers from './components/Developers.vue'
 import Login from './components/Login.vue'
 import Register from './components/Register.vue'
@@ -26,9 +26,9 @@ export default new Router({
       component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
     },
     {
-      path: '/linechart',
-      name: 'linechart',
-      component: LineChart
+      path: '/boxplot',
+      name: 'boxplot',
+      component: BoxPlot
     },
     {
       path: '/developers',
