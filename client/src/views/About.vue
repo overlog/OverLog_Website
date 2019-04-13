@@ -6,7 +6,7 @@
 
 <style>
 .about {
-  background-image: url('/src/assets/logo.png');
+  background-image: url("/src/assets/logo.png");
   background-color: aqua;
-} 
+}
 </style>
