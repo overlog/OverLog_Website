@@ -5,10 +5,12 @@
       Try to resize the browser window to see how it always will cover the full screen (when scrolled to top),
       and that it scales nicely on all screen sizes.
     </p>
+    <Card/>
   </div>
 </template>
 
 <script>
+import Card from "@/components/Card";
 // @ is an alias to /src
 
 //import axios from 'axios';
@@ -33,7 +35,8 @@
   });*/
 
 export default {
-  name: "home"
+  name: "home",
+  components: { Card }
 };
 </script>
 
