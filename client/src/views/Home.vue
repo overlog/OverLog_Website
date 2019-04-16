@@ -29,11 +29,16 @@
   });*/
 
 export default {
+<<<<<<< HEAD
   name: "home"
+=======
+  name: "home",
+>>>>>>> c2950c9ec3acf2d6322f061d8e83d2c76b782990
 };
 </script>
 
 <style scoped>
+<<<<<<< HEAD
 body {
   width: 100%;
   height: 100%;
@@ -44,15 +49,9 @@ html {
 .bg {
   /* The image used */
   background-image: url("http://sfwallpaper.com/images/hd-wallpaper-1080p-widescreen-free-6.jpg");
+=======
+>>>>>>> c2950c9ec3acf2d6322f061d8e83d2c76b782990
 
-  /* Full height */
-  height: 100%;
-
-  /* Center and scale the image nicely */
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
 </style>
 
 
