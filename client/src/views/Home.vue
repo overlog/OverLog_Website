@@ -1,16 +1,10 @@
 <template>
   <div class="bg">
-    <p class="py-5 text-center">
-      This example creates a full page background image.
-      Try to resize the browser window to see how it always will cover the full screen (when scrolled to top),
-      and that it scales nicely on all screen sizes.
-    </p>
-    <Card/>
+    <p class="py-5"></p>
   </div>
 </template>
 
 <script>
-import Card from "@/components/Card";
 // @ is an alias to /src
 
 //import axios from 'axios';
@@ -35,8 +29,7 @@ import Card from "@/components/Card";
   });*/
 
 export default {
-  name: "home",
-  components: { Card }
+  name: "home"
 };
 </script>
 
@@ -50,7 +43,7 @@ html {
 }
 .bg {
   /* The image used */
-  background-image: url("https://mdbootstrap.com/img/Photos/Horizontal/Nature/full page/img(20).jpg");
+  background-image: url("http://sfwallpaper.com/images/hd-wallpaper-1080p-widescreen-free-6.jpg");
 
   /* Full height */
   height: 100%;

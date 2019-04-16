@@ -31,30 +31,27 @@
       <mdb-row class="mt-3">
         <mdb-col md="3" lg="4" xl="3" class="mb-4">
           <h6 class="text-uppercase font-weight-bold">
-            <strong>Company name</strong>
+            <strong>OVERLOG</strong>
           </h6>
           <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px">
-          <p>
-            Here you can use rows and columns here to organize your footer content. Lorem ipsum dolor sit
-            amet, consectetur adipisicing elit.
-          </p>
+          <p>Overlog hakkında muazzam bilgiler.</p>
         </mdb-col>
         <mdb-col md="2" lg="2" xl="2" class="mb-4">
           <h6 class="text-uppercase font-weight-bold">
-            <strong>Products</strong>
+            <strong>Navbar</strong>
           </h6>
           <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px">
           <p>
-            <a href="#!">MDBootstrap</a>
+            <a href="home">Home</a>
           </p>
           <p>
-            <a href="#!">MDWordPress</a>
+            <a href="about">About</a>
           </p>
           <p>
-            <a href="#!">BrandFlow</a>
+            <a href="developers">Developers</a>
           </p>
           <p>
-            <a href="#!">Bootstrap Angular</a>
+            <a href="mylogs">My Logs</a>
           </p>
         </mdb-col>
         <mdb-col md="3" lg="2" xl="2" class="mb-4">
@@ -63,16 +60,16 @@
           </h6>
           <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px">
           <p>
-            <a href="#!">Your Account</a>
+            <a href="youraccount">Your Account</a>
           </p>
           <p>
-            <a href="#!">Become an Affiliate</a>
+            <a href="sitemap">Site Map</a>
           </p>
           <p>
-            <a href="#!">Shipping Rates</a>
+            <a href="home">Overlog</a>
           </p>
           <p>
-            <a href="#!">Help</a>
+            <a href="help">Help</a>
           </p>
         </mdb-col>
         <mdb-col md="4" lg="3" xl="3" class="mb-4">
@@ -81,16 +78,16 @@
           </h6>
           <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px">
           <p>
-            <i class="fas fa-home mr-3"></i> New York, NY 10012, US
+            <i class="fas fa-home mr-3"></i> Antalya, 07190, TR
           </p>
           <p>
-            <i class="fas fa-envelope mr-3"></i> info@example.com
+            <i class="fas fa-envelope mr-3"></i> info@overlog.com
           </p>
           <p>
-            <i class="fas fa-phone mr-3"></i> + 01 234 567 88
+            <i class="fas fa-phone mr-3"></i> + 90 555 55 55
           </p>
           <p>
-            <i class="fas fa-print mr-3"></i> + 01 234 567 89
+            <i class="fas fa-print mr-3"></i> + 90 555 55 55
           </p>
         </mdb-col>
       </mdb-row>
@@ -98,7 +95,7 @@
     <div class="footer-copyright text-center py-3">
       <mdb-container fluid>
         &copy; 2018 Copyright:
-        <a href="https://www.MDBootstrap.com">MDBootstrap.com</a>
+        <a href="https://www.MDBootstrap.com">overlog.com</a>
       </mdb-container>
     </div>
   </mdb-footer>
