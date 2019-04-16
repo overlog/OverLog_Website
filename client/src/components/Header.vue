@@ -1,6 +1,6 @@
 <template>
   <div>
-    <mdb-navbar class="flexible-navbar white" light position="top" scrolling>
+    <mdb-navbar dark color="primary" position="top" transparent>
       <mdb-navbar-brand href="#" target="_blank">OVERLOG</mdb-navbar-brand>
       <mdb-navbar-toggler>
         <mdb-navbar-nav left>
@@ -15,7 +15,7 @@
         </mdb-form-inline>
       </mdb-navbar-toggler>
     </mdb-navbar>
-    </div>
+  </div>
 </template>
 
 <script>

@@ -95,7 +95,7 @@
     <div class="footer-copyright text-center py-3">
       <mdb-container fluid>
         &copy; 2018 Copyright:
-        <a href="https://www.MDBootstrap.com">overlog.com</a>
+        <a href="https://overlog.com">overlog.com</a>
       </mdb-container>
     </div>
   </mdb-footer>

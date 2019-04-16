@@ -1,6 +1,7 @@
 <template>
   <div class="bg">
     <p class="py-5"></p>
+    <img id="bg" src="@/assets/homepagebg.png" class="img-fluid" alt="Responsive image">
   </div>
 </template>
 
@@ -29,29 +30,21 @@
   });*/
 
 export default {
-<<<<<<< HEAD
   name: "home"
-=======
-  name: "home",
->>>>>>> c2950c9ec3acf2d6322f061d8e83d2c76b782990
 };
 </script>
 
 <style scoped>
-<<<<<<< HEAD
-body {
-  width: 100%;
-  height: 100%;
-}
-html {
-  height: 100%;
+.transparent {
+  background-color: white !important;
+  opacity: 0.65;
+  border-color: transparent !important;
 }
 .bg {
-  /* The image used */
-  background-image: url("http://sfwallpaper.com/images/hd-wallpaper-1080p-widescreen-free-6.jpg");
-=======
->>>>>>> c2950c9ec3acf2d6322f061d8e83d2c76b782990
-
+  margin-top: -250px;
+  opacity: 0.99;
+  margin-bottom: -24px;
+}
 </style>
 
 
