@@ -1,7 +1,7 @@
 <template>
   <div class="login">
     <div v-if="loggingIn" class="container-loading">
-      <img src="/loading.gif" alt="Loading Icon">
+      <img src="@/assets/loading.gif" alt="Loading Icon">
     </div>
     <p v-if="loginError">{{ loginError }}</p>
     <p v-if="loginSuccessful">Login Successful</p>
@@ -35,10 +35,10 @@ export default {
   },
   methods: {
     ...mapActions([
-      'doLogin'
+      'Login'
     ]),
     loginSubmit() {
-      this.doLogin({
+      this.Login({
         email: this.email,
         password: this.password
       })

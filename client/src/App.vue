@@ -2,7 +2,7 @@
   <div id="app">
     <Header></Header>
     <router-view/>
-    <Footer></Footer>
+    <Footer class="footer"></Footer>
   </div>
 </template>
 
@@ -27,6 +27,12 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+}
+.app{
+  position: absolute;
+  bottom: 0;
+  widows: 100%;
+  height: 60px;
 }
 
 </style>
