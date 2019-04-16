@@ -30,11 +30,16 @@
   });*/
 
 export default {
+<<<<<<< HEAD
   name: "home"
+=======
+  name: "home",
+>>>>>>> 5c49d3267c84ebbcf8f0168147709781e5e68b6c
 };
 </script>
 
 <style scoped>
+<<<<<<< HEAD
 .transparent {
   background-color: white !important;
   opacity: 0.65;
@@ -45,6 +50,9 @@ export default {
   opacity: 0.99;
   margin-bottom: -24px;
 }
+=======
+
+>>>>>>> 5c49d3267c84ebbcf8f0168147709781e5e68b6c
 </style>
 
 
