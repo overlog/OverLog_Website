@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
 import BoxPlot from './components/BoxPlot'
+import LineChart from './components/LineChart.vue'
 import Developers from './components/Developers.vue'
 import Login from './components/Login.vue'
 import Register from './components/Register.vue'
@@ -29,6 +30,11 @@ export default new Router({
       path: '/boxplot',
       name: 'boxplot',
       component: BoxPlot
+    },
+    {
+      path: '/linechart',
+      name: 'linechart',
+      component: LineChart
     },
     {
       path: '/developers',

@@ -33,23 +33,47 @@ export default {
     }
   },
   methods: {
-      updateChart() {
-        const max = 90;
-        const min = 20;
-        const newData = this.series[0].data.map(() => {
-          return Math.floor(Math.random() * (max - min + 1)) + min
-        })
+    fetchlogs() {
+      console.log("...")
+        fetch('http://127.0.0.1:5000/logs')
+        .then((res) => {return res.json() })
+        .then( (res) => { this.setTypes(res) } )
+    },
+    setTypes(res){
+      var dates = [];
+      var types = [];
+      var len = Object.keys(res).length;
+      var num = 0;
+      for(let i = 2; i < len; i++){
+        var date = res[i]['date'].split(" ")[0];
+        if(dates.indexOf(date) == -1){
+          dates.push(date);
+          types.push(num);
+          num = 0;
+        }else{
+          num++;
+        }
+      }
 
+      this.series =         this.series = [{
+                data: types
+              }];
+      this.xaxis = this.xaxis = [{
+                categories: dates
+      }];
+      console.log(types);
+      console.log(dates)
+    },
+
+      updateChart() {
+        this.fetchlogs()
+      
         const colors = ['#008FFB', '#00E396', '#FEB019', '#FF4560', '#775DD0']
 
         // Make sure to update the whole options config and not just a single property to allow the Vue watch catch the change.
         this.chartOptions = {
           colors: [colors[Math.floor(Math.random()*colors.length)]]
         };
-        // In the same way, update the series option
-        this.series = [{
-          data: newData
-        }]
       }
     }
 }
