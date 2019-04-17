@@ -11,11 +11,7 @@ db = SQLAlchemy(app)
 # Database
 
 # Copy the uri of the database here!
-engine = create_engine('')
-
-
-
-
+engine = create_engine('postgres://wwignxrncfkuoj:42995cfd99e0913fe7385a6237401e81bd88c735c2285cb590f8c1a874a732bf@ec2-54-246-92-116.eu-west-1.compute.amazonaws.com:5432/d11mskt5lrs57u')
 
 @app.route('/')
 def hello_world():
