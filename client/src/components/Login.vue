@@ -1,12 +1,10 @@
 <template>
   <div class="login">
-    <div v-if="loggingIn" class="container-loading">
+    <!--<div v-if="loggingIn" class="container-loading">
       <img src="@/assets/loading.gif" alt="Loading Icon">
-    </div>
-    <p v-if="loginError">{{ loginError }}</p>
-    <p v-if="loginSuccessful">Login Successful</p>
-    <form @submit.prevent="loginSubmit">
-      <input type="username" placeholder="Username" v-model="username">
+    </div>-->
+    <form @submit="login">
+      <input type="email" placeholder="E-Mail" v-model="email">
       <input type="password" placeholder="Password" v-model="password">
       <button type="submit">Login</button>
     </form>
@@ -14,9 +12,6 @@
 </template>
 
 <script>
-
-import { mapState } from 'vuex'
-import { mapActions} from 'vuex'
 
 export default {
   name: 'Login',
@@ -26,24 +21,13 @@ export default {
       password: ''
     }
   },
-  computed: {
-    ...mapState([
-      'loggingIn',
-      'loginError',
-      'loginSuccessful'
-    ])
-  },
   methods: {
-    ...mapActions([
-      'Login'
-    ]),
-    loginSubmit() {
-      this.Login({
-        username: this.username,
-        password: this.password
-      })
+    login: function(){
+      const email = this.email
+      const password = this.password
+      this.$store.dispatch('login', { email, password }).then(() => this.$router.push('/'))
     }
-  },
+  }
 }
 </script>
 

@@ -1,27 +1,18 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import Axios from 'axios';
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    loggingIn: false,
-    loginError: null,
-    loginSuccessfull: false
+
   },
   mutations: {
-    loginStart: state => state.loggingIn = true,
-    loginStop: (state, errorMessage) => {
-      state.loggingIn = false;
-      state.loginError = errorMessage;
-      state.loginSuccessfull = !errorMessage;
-    }
+
   },
   actions: {
-    Login({commit}, loginData) {
-      commit('loginStart');
 
+<<<<<<< HEAD
       fetch('localhost:5000/')
       .then((response) => {
         console.log(response);
@@ -31,5 +22,7 @@ export default new Vuex.Store({
         console.log(error);
       })
     }
+=======
+>>>>>>> b01db4b1c2e7fccb056d5e2e2a8becedaf499594
   }
 })
