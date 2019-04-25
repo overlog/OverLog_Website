@@ -22,14 +22,13 @@ export default new Vuex.Store({
     Login({commit}, loginData) {
       commit('loginStart');
 
-      Axios.post('https://reqres.in/api/login', {
-      ...loginData
-      })
-      .then(() => {
-        commit('loginStop', null)
+      fetch('localhost:5000/')
+      .then((response) => {
+        console.log(response);
+
       })
       .catch(error => {
-        commit('loginStop', error.response.data.error)
+        console.log(error);
       })
     }
   }

@@ -6,7 +6,7 @@
     <p v-if="loginError">{{ loginError }}</p>
     <p v-if="loginSuccessful">Login Successful</p>
     <form @submit.prevent="loginSubmit">
-      <input type="email" placeholder="E-Mail" v-model="email">
+      <input type="username" placeholder="Username" v-model="username">
       <input type="password" placeholder="Password" v-model="password">
       <button type="submit">Login</button>
     </form>
@@ -22,7 +22,7 @@ export default {
   name: 'Login',
   data() {
     return {
-      email: '',
+      username: '',
       password: ''
     }
   },
@@ -39,7 +39,7 @@ export default {
     ]),
     loginSubmit() {
       this.Login({
-        email: this.email,
+        username: this.username,
         password: this.password
       })
     }

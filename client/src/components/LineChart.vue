@@ -35,7 +35,7 @@ export default {
   methods: {
     fetchlogs() {
       console.log("...")
-        fetch('http://127.0.0.1:5000/logs')
+        fetch('http://127.0.0.1:5000/logs/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoiYWRtaW4iLCJwYXNzd29yZCI6ImFkbWluIn0.zy8qt30iqkmtZ4vP-ZkFJ08RyfMnXpphPWnYJKZfWSY')
         .then((res) => {return res.json() })
         .then( (res) => { this.setTypes(res) } )
     },
@@ -67,7 +67,7 @@ export default {
 
       updateChart() {
         this.fetchlogs()
-      
+
         const colors = ['#008FFB', '#00E396', '#FEB019', '#FF4560', '#775DD0']
 
         // Make sure to update the whole options config and not just a single property to allow the Vue watch catch the change.
