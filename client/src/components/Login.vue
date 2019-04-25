@@ -1,11 +1,9 @@
 <template>
   <div class="login">
-    <div v-if="loggingIn" class="container-loading">
+    <!--<div v-if="loggingIn" class="container-loading">
       <img src="@/assets/loading.gif" alt="Loading Icon">
-    </div>
-    <p v-if="loginError">{{ loginError }}</p>
-    <p v-if="loginSuccessful">Login Successful</p>
-    <form @submit.prevent="loginSubmit">
+    </div>-->
+    <form>
       <input type="email" placeholder="E-Mail" v-model="email">
       <input type="password" placeholder="Password" v-model="password">
       <button type="submit">Login</button>
@@ -15,33 +13,12 @@
 
 <script>
 
-import { mapState } from 'vuex'
-import { mapActions} from 'vuex'
-
 export default {
   name: 'Login',
   data() {
     return {
       email: '',
       password: ''
-    }
-  },
-  computed: {
-    ...mapState([
-      'loggingIn',
-      'loginError',
-      'loginSuccessful'
-    ])
-  },
-  methods: {
-    ...mapActions([
-      'Login'
-    ]),
-    loginSubmit() {
-      this.Login({
-        email: this.email,
-        password: this.password
-      })
     }
   },
 }
