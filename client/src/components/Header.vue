@@ -10,6 +10,7 @@
           <mdb-nav-item v-if="!loggedIn" href="/login" waves-fixed>Login</mdb-nav-item>
           <mdb-nav-item @click="logout" v-if="loggedIn" href="/" waves-fixed>Logout</mdb-nav-item>
           <mdb-nav-item href="/register" waves-fixed>Register</mdb-nav-item>
+          <mdb-nav-item href="/register2" waves-fixed>Register2</mdb-nav-item>
         </mdb-navbar-nav>
         <mdb-form-inline>
           <mdb-input type="text" placeholder="Search" aria-label="Search"/>

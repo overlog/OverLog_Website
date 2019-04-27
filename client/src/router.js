@@ -1,55 +1,62 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import Home from './views/Home.vue'
-import BoxPlot from './components/BoxPlot'
-import LineChart from './components/LineChart.vue'
-import Developers from './components/Developers.vue'
-import Login from './components/Login.vue'
-import Register from './components/Register.vue'
+import Vue from "vue";
+import Router from "vue-router";
+import Home from "./views/Home.vue";
+import BoxPlot from "./components/BoxPlot";
+import LineChart from "./components/LineChart.vue";
+import Developers from "./components/Developers.vue";
+import Login from "./components/Login.vue";
+import Register from "./components/Register.vue";
+import Register2 from "./views/Register2.vue";
 
-Vue.use(Router)
+Vue.use(Router);
 
 export default new Router({
-  mode: 'history',
+  mode: "history",
   base: process.env.BASE_URL,
   routes: [
     {
-      path: '/',
-      name: 'home',
+      path: "/",
+      name: "home",
       component: Home
     },
     {
-      path: '/about',
-      name: 'about',
+      path: "/about",
+      name: "about",
       // route level code-splitting
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
+      component: () =>
+        import(/* webpackChunkName: "about" */ "./views/About.vue")
     },
     {
-      path: '/boxplot',
-      name: 'boxplot',
+      path: "/boxplot",
+      name: "boxplot",
       component: BoxPlot
     },
     {
-      path: '/linechart',
-      name: 'linechart',
+      path: "/linechart",
+      name: "linechart",
       component: LineChart
     },
     {
-      path: '/developers',
-      name: 'develoers',
+      path: "/developers",
+      name: "develoers",
       component: Developers
     },
     {
-      path: '/login',
-      name: 'login',
-      component: Login  
+      path: "/login",
+      name: "login",
+      component: Login
     },
     {
-      path: '/register',
-      name: 'register',
+      path: "/register",
+      name: "register",
       component: Register
     },
+    {
+      path: "/register2",
+      name: "register2",
+      component: Register2
+    }
   ]
-})
+});
