@@ -7,7 +7,8 @@
           <mdb-nav-item to="/" waves-fixed>Home</mdb-nav-item>
           <mdb-nav-item href="/about" waves-fixed>About</mdb-nav-item>
           <mdb-nav-item href="/developers" waves-fixed>Developers</mdb-nav-item>
-          <mdb-nav-item href="/login" waves-fixed>Login</mdb-nav-item>
+          <mdb-nav-item v-if="!loggedIn" href="/login" waves-fixed>Login</mdb-nav-item>
+          <mdb-nav-item @click="logout" v-if="loggedIn" href="/" waves-fixed>Logout</mdb-nav-item>
           <mdb-nav-item href="/register" waves-fixed>Register</mdb-nav-item>
         </mdb-navbar-nav>
         <mdb-form-inline>
@@ -19,6 +20,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import {
   mdbNavbar,
   mdbNavbarBrand,
@@ -39,6 +41,16 @@ export default {
     mdbNavbarToggler,
     mdbFormInline,
     mdbInput
+  },
+  computed: {
+    ...mapState([
+      'loggedIn'
+    ])
+  },
+  methods: {
+    logout(){
+      console.log("asdasda")
+    }
   }
 };
 </script>

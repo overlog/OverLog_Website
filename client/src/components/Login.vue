@@ -3,9 +3,9 @@
     <!--<div v-if="loggingIn" class="container-loading">
       <img src="@/assets/loading.gif" alt="Loading Icon">
     </div>-->
-    <form @submit="login">
-      <input type="email" placeholder="E-Mail" v-model="email">
-      <input type="password" placeholder="Password" v-model="password">
+    <form @submit.prevent="login">
+      <input type="username" placeholder="username" v-model="username">
+      <input type="password" placeholder="Password"   v-model="password">
       <button type="submit">Login</button>
     </form>
   </div>
@@ -23,9 +23,9 @@ export default {
   },
   methods: {
     login: function(){
-      const email = this.email
+      const username = this.username
       const password = this.password
-      this.$store.dispatch('login', { email, password }).then(() => this.$router.push('/'))
+      this.$store.dispatch('login', { username, password }).then(() => this.$router.push('/'))
     }
   }
 }

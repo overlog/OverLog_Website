@@ -3,7 +3,7 @@ from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import create_engine
 import jwt
-import datetime
+from sqlalchemy.orm.exc import NoResultFound
 from functools import wraps
 
 app = Flask(__name__)
@@ -42,7 +42,7 @@ def auth(f):
 
 @app.route('/')
 def hello_world():
-    return "am"
+    return "overlog"
 
 
 
@@ -78,20 +78,28 @@ def logs(token):
 
 @app.route('/login', methods=['POST'])
 def login():
-    username = request.form.get('username')
-    password = request.form.get('password')
-    print(username)
-    print(password)
+    data = request.get_json()
+    username = data['username']
+    password = data['password']
     token = ''
-    if username == 'admin' and password == 'admin':
+
+    connection = engine.connect()
+    query = ("select id from users where username = '" + username + "' and passwd = '" +  str(password) + "'")
+    result = connection.execute(query)
+
+    user = result.first()
+    if user is not None:
         token = jwt.encode({
             'user': username,
             'password': password,
         }, app.config['SECRET_KEY'])
+        token = token.decode("utf-8")
+        userID = user[0]
     else:
         token = 'Invalid username or password'
+        userID = -1
 
-    return jsonify({'token': token.decode("utf-8")})
+    return jsonify({'token': token, 'userID': userID})
 
 
 

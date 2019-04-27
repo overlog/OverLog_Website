@@ -7,6 +7,10 @@ import router from './router'
 import VueApexCharts from 'vue-apexcharts'
 import store from './store'
 
+import Axios from 'axios'
+
+Vue.prototype.$http = Axios;
+
 Vue.use(VueApexCharts)
 Vue.use(Vuex)
 
