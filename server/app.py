@@ -5,6 +5,7 @@ from sqlalchemy import create_engine
 import jwt
 from sqlalchemy.orm.exc import NoResultFound
 from functools import wraps
+import csv
 
 app = Flask(__name__)
 CORS(app)
@@ -16,7 +17,9 @@ app.config['SECRET_KEY'] = 'OVERLOG'
 # Database
 
 # Copy the uri of the database here!
-engine = create_engine('postgres://wwignxrncfkuoj:42995cfd99e0913fe7385a6237401e81bd88c735c2285cb590f8c1a874a732bf@ec2-54-246-92-116.eu-west-1.compute.amazonaws.com:5432/d11mskt5lrs57u')
+#engine = create_engine('postgres://wwignxrncfkuoj:42995cfd99e0913fe7385a6237401e81bd88c735c2285cb590f8c1a874a732bf@ec2-54-246-92-116.eu-west-1.compute.amazonaws.com:5432/d11mskt5lrs57u')
+engine = create_engine('postgres://postgres:bewelko@localhost:5432/overlog')
+
 
 def auth(f):
     @wraps(f)
@@ -41,22 +44,29 @@ def auth(f):
 
 
 @app.route('/')
-def hello_world():
-    return "overlog"
-
-
-
-    print("asdasd")
+def hello_world(): #write weather datas to database
     connection = engine.connect()
-    query = ("select * from log")
-    result = connection.execute(query)
-    dict = {}
-    for i in result:
-        dict[i["id"]] = {"type": i["type"], "text": i["text"]}
+    ##
 
-    print(dict)
+    with open('/home/konik/Desktop/weatherHistory.csv', mode='r') as csv_file:
+        csv_reader = csv.DictReader(csv_file)
+        line_count = 0
+        for row in csv_reader:
+            if line_count == 0:
+                print(f'Column names are {", ".join(row)}')
+                line_count += 1
+            elif line_count == 100: #how many lines will write to database
+                break
+            date = "'" + row["Formatted Date"] + "'"
+            type = "'" + row["Precip Type"] + "'"
+            text = "'" + row["Summary"] + "'"
 
-    return jsonify(dict)
+            query = ("insert into log(type, text, userID, date) values(" + type + ", " + text + ", 1, " + date +")")
+            connection.execute(query)
+            #print(f'\t{row["Summary"]} ')
+            line_count += 1
+    return "success"
+
 
 
 @app.route('/logs/<token>')
@@ -65,15 +75,13 @@ def logs(token):
     connection = engine.connect()
     query = ("select * from log")
     result = connection.execute(query)
-    dict = []
+    JSONArray = []
     for i in result:
-        log = i["text"].split(",")
-        if(len(log)>2):
-            dict.append({"date": log[0], "type": log[2]})
+        JSONArray.append({"date": i[0]})
 
-    print(dict)
+    print(JSONArray)
 
-    return jsonify(dict)
+    return jsonify(JSONArray)
 
 
 @app.route('/login', methods=['POST'])
@@ -100,9 +108,6 @@ def login():
         userID = -1
 
     return jsonify({'token': token, 'userID': userID})
-
-
-
 
 
 
