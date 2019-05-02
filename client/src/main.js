@@ -8,6 +8,7 @@ import VueApexCharts from 'vue-apexcharts'
 import store from './store'
 
 import Axios from 'axios'
+import createPersistedState from 'vuex-persistedstate'
 
 Vue.prototype.$http = Axios;
 

@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-
+import createPersistedState from 'vuex-persistedstate'
 import axios from 'axios'
 
 Vue.prototype.$http = axios;
@@ -26,6 +26,10 @@ export default new Vuex.Store({
     setUserID(state, id){
       state.userID = id
     },
+    setLoggedOut(state){
+      state.loggedIn = false
+      state.userID = -1
+    }
 
   },
   actions: {
@@ -55,9 +59,14 @@ export default new Vuex.Store({
       })
     },
 
+    logout({ commit }){
+      localStorage.removeItem('token')
+      localStorage.removeItem('userID')
+      commit('setLoggedOut')
+    }
+  },
 
-
-  }
+    plugins: [createPersistedState()],
 
 
 

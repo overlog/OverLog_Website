@@ -8,9 +8,10 @@
           <mdb-nav-item href="/about" waves-fixed>About</mdb-nav-item>
           <mdb-nav-item href="/developers" waves-fixed>Developers</mdb-nav-item>
           <mdb-nav-item v-if="!loggedIn" href="/login" waves-fixed>Login</mdb-nav-item>
-          <mdb-nav-item @click="logout" v-if="loggedIn" href="/" waves-fixed>Logout</mdb-nav-item>
           <mdb-nav-item href="/register" waves-fixed>Register</mdb-nav-item>
-          <mdb-nav-item href="/register2" waves-fixed>Register2</mdb-nav-item>
+          <mdb-nav-item v-if="loggedIn" href="/searchlog" waves-fixed>Search Log</mdb-nav-item>
+          <button v-on:click="logout" v-if="loggedIn" href="/" waves-fixed>Logout</button>
+          <!-- <span v-if="loggedIn"> | <a @click="logout">Logout</a></span>  -->
         </mdb-navbar-nav>
         <mdb-form-inline>
           <mdb-input type="text" placeholder="Search" aria-label="Search"/>
@@ -46,15 +47,22 @@ export default {
   computed: {
     ...mapState([
       'loggedIn'
-    ])
+    ]),
+
   },
   methods: {
-    logout(){
-      console.log("asdasda")
+    logout: function(){
+      this.$store.dispatch('logout').then(() => location.reload())
     }
   }
+
 };
 </script>
 
 <style>
 </style>
+
+
+/*
+
+*/
