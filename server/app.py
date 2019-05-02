@@ -65,11 +65,11 @@ def logs(token):
     connection = engine.connect()
     query = ("select * from log")
     result = connection.execute(query)
-    dict = {}
+    dict = []
     for i in result:
         log = i["text"].split(",")
         if(len(log)>2):
-            dict[i["id"]] = {"date": log[0], "type": log[2]}
+            dict.append({"date": log[0], "type": log[2]})
 
     print(dict)
 

@@ -37,6 +37,7 @@ export default new Vuex.Store({
             const token = resp.data.token
             const userID = resp.data.userID
             localStorage.setItem('token', token)
+            localStorage.setItem('userID', userID)
             if(userID != -1){
               commit('setLoggedIn')
               commit('setUserID', userID)
