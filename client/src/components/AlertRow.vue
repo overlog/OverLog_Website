@@ -11,14 +11,24 @@
 </template>
 
 <script>
-import axios from 'axios'
+  import { mapState } from 'vuex'
+  import axios from 'axios'
   export default{
     props: ['row', 'index'],
+
+
+    computed: {
+      ...mapState([
+        'token'
+        
+      ]),
+
+    },
 
     methods: {
       cancel: function(id, index){
         console.log(id)
-        axios({ url: 'http://localhost:5000/deletealert', params: {id: id}, method: 'POST' })
+        axios({ url: 'http://localhost:5000/deletealert/' + this.token, params: {id: id}, method: 'POST' })
         this.$emit('itemRemoved', index);
       }
 

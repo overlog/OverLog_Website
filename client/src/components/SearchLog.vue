@@ -14,6 +14,9 @@
 
 
 <script>
+
+  import { mapState } from 'vuex'
+  import axios from 'axios'
   import { mdbDatatable, mdbContainer } from 'mdbvue';
   export default {
     components: {
@@ -21,8 +24,13 @@
       mdbContainer
     },
     computed: {
+      ...mapState([
+        'token',
+        'userID'
+      ]),
       data() {
         return {
+
           columns: [],
           rows: []
         }
@@ -43,30 +51,34 @@
       }
     },
     mounted(){
-      fetch('http://127.0.0.1:5000/logs/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoiYWRtaW4iLCJwYXNzd29yZCI6ImFkbWluIn0.zy8qt30iqkmtZ4vP-ZkFJ08RyfMnXpphPWnYJKZfWSY')
-        .then(res => res.json())
-        .then(json => {
-          console.log(json)
-          let keys = ["date", "type"];
-          let entries = this.filterData(json, keys);
-          //columns
-          this.data.columns = [
-            {
-              label: 'Name',
-              field: 'name',
-              sort: 'asc'
-            },
-            {
-              label: 'Position',
-              field: 'position',
-              sort: 'asc'
-            },
 
-          ]
-          //rows
-          entries.map(entry => this.data.rows.push(entry));
-        })
-        .catch(err => console.log(err));
+      console.log(this.userID)
+      axios({ url: 'http://127.0.0.1:5000/logs/' + this.token, params: {userID: this.userID} ,method: 'GET' })
+      .then(res => res.data)
+      .then(json => {
+        console.log(json)
+        let keys = ["date", "type"];
+        let entries = this.filterData(json, keys);
+        //columns
+        this.data.columns = [
+          {
+            label: 'Name',
+            field: 'name',
+            sort: 'asc'
+          },
+          {
+            label: 'Position',
+            field: 'position',
+            sort: 'asc'
+          },
+
+        ]
+        //rows
+        entries.map(entry => this.data.rows.push(entry));
+      })
+      .catch(err => console.log(err));
+
+
     }
   };
 </script>

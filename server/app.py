@@ -72,8 +72,9 @@ def hello_world(): #write weather datas to database
 @app.route('/logs/<token>')
 @auth
 def logs(token):
+    userID = "'" + request.args.get('userID') + "'"
     connection = engine.connect()
-    query = ("select * from log")
+    query = ("select * from log where userid = " + userID)
     result = connection.execute(query)
     JSONArray = []
     for i in result:
@@ -109,11 +110,13 @@ def login():
 
     return jsonify({'token': token, 'userID': userID})
 
-@app.route('/getalert', methods=['GET'])
-def getAlert():
+@app.route('/getalert/<token>', methods=['GET'])
+@auth
+def getAlert(token):
+    userID = "'" + request.args.get('userID') + "'"
 
     connection = engine.connect()
-    query = ("select * from alert")
+    query = ("select * from alert where userid = " + userID)
     result = connection.execute(query)
     JSONArray = []
     for i in result:
@@ -123,8 +126,9 @@ def getAlert():
 
     return jsonify(JSONArray)
 
-@app.route('/deletealert', methods=['POST'])
-def deleteAlert():
+@app.route('/deletealert/<token>', methods=['POST'])
+@auth
+def deleteAlert(token):
     id = request.args.get('id')
     print(id)
     connection = engine.connect()
@@ -132,15 +136,17 @@ def deleteAlert():
     connection.execute(query)
     return "success"
 
-@app.route('/addallert', methods=['POST'])
-def addallert():
+@app.route('/addalert/<token>', methods=['POST'])
+@auth
+def addallert(token):
     logtype = "'" + request.args.get('logtype') + "'"
     starttime = "'" + request.args.get('datetime1') + "'"
     endtime = "'" + request.args.get('datetime2') + "'"
     amount = "'" + request.args.get('amount') + "'"
+    userID = "'" + request.args.get('userID') + "'"
     print(logtype, starttime, endtime)
     connection = engine.connect()
-    query = ("insert into alert(type, endtime, starttime, amount) values (" + logtype + "," + endtime + "," + starttime + "," + amount + ")")
+    query = ("insert into alert(type, endtime, starttime, amount, userid) values (" + logtype + "," + endtime + "," + starttime + "," + amount + "," + userID + ")")
     connection.execute(query)
     return "success"
 

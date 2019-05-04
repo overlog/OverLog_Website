@@ -12,6 +12,10 @@ import Axios from 'axios'
 import createPersistedState from 'vuex-persistedstate'
 
 Vue.prototype.$http = Axios;
+const token = localStorage.getItem('token');
+if (token) {
+  Vue.prototype.$http.defaults.headers.common['Authorization'] = token
+}
 
 Vue.use(VueApexCharts)
 Vue.use(Vuex)

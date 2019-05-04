@@ -53,7 +53,7 @@ export default {
   },
   methods: {
     logout: function(){
-      this.$store.dispatch('logout').then(() => location.reload())
+      this.$store.dispatch('logout').then(() => this.$router.push('/'))
     }
   }
 

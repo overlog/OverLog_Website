@@ -38,6 +38,7 @@
 </template>
 
 <script>
+  import { mapState } from 'vuex'
   import axios from 'axios'
   import DatePicker from 'vue2-datepicker'
   import { mdbTbl, mdbTblHead, mdbTblBody } from 'mdbvue';
@@ -60,22 +61,30 @@
       }
     },
 
+    computed: {
+      ...mapState([
+        'token',
+        'userID'
+      ]),
+
+    },
+
+
+
     methods: {
       fetchAlerts(){
-        fetch('http://127.0.0.1:5000/getalert')
-        .then((res) => { return res.json() })
+        axios({ url: 'http://localhost:5000/getalert/' + this.token, params: {userID: this.userID}, method: 'GET' })
         .then((res) => {
           console.log(res)
-          this.rows = res;
-        })
+          this.rows = res.data;
+         })
 
       },
       handleRemoveItem(index){
         this.rows.splice(index, 1);
       },
       addAllert(logtype, datetime1, datetime2, amount){
-        console.log(logtype, datetime1, datetime2, amount)
-        axios({ url: 'http://localhost:5000/addallert', params: {logtype: logtype, datetime1: datetime1, datetime2: datetime2, amount: amount}, method: 'POST' }).then(
+        axios({ url: 'http://localhost:5000/addalert/' + this.token , params: {logtype: logtype, datetime1: datetime1, datetime2: datetime2, amount: amount, userID: this.userID}, method: 'POST' }).then(
           (res)=> {this.fetchAlerts()}
         )
       },
