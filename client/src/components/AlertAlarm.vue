@@ -8,8 +8,8 @@
         <option value="Info">Info</option>
         <option value="Warning">Warning</option>
       </select>&nbsp;&nbsp;
-      Start Date Time: <date-picker v-model="datetime1" lang="english" placeholder="Select Date Time" type="datetime" format="YYYY-MM-dd HH:mm:ss" width="500"></date-picker>&nbsp;&nbsp;
-      End Date Time: <date-picker v-model="datetime2" lang="english" placeholder="Select Date Time" type="datetime" format="YYYY-MM-dd HH:mm:ss" width="500"></date-picker>&nbsp;&nbsp;
+      Start Date Time: <date-picker v-model="datetime1" lang="english" placeholder="Select Date Time" type="datetime" format="YYYY-MM-DD HH:mm:ss a" width="500"></date-picker>&nbsp;&nbsp;
+      End Date Time: <date-picker v-model="datetime2" lang="english" placeholder="Select Date Time" type="datetime" format="YYYY-MM-DD HH:mm:ss a" width="500"></date-picker>&nbsp;&nbsp;
       Amount: <input type="number" placeholder="" v-model="amount" />&nbsp;&nbsp;
       <button  type="submit" class="btn btn-indigo btn-sm m-0">Add</button>&nbsp;&nbsp;
     </form>
@@ -84,7 +84,9 @@
         this.rows.splice(index, 1);
       },
       addAllert(logtype, datetime1, datetime2, amount){
-        axios({ url: 'http://localhost:5000/addalert/' + this.token , params: {logtype: logtype, datetime1: datetime1, datetime2: datetime2, amount: amount, userID: this.userID}, method: 'POST' }).then(
+
+
+        axios({ url: 'http://localhost:5000/addalert/' + this.token , params: {logtype: logtype, datetime1: new Date(datetime1.getTime() - datetime1.getTimezoneOffset() * 60 * 1000), datetime2: new Date(datetime2.getTime() - datetime2.getTimezoneOffset() * 60 * 1000), amount: amount, userID: this.userID}, method: 'POST' }).then(
           (res)=> {this.fetchAlerts()}
         )
       },
