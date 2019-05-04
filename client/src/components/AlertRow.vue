@@ -3,6 +3,7 @@
     <td>{{ row.type }}</td>
     <td>{{ row.starttime }}</td>
     <td>{{ row.endtime }}</td>
+    <td>{{ row.amount }}</td>
     <td>
         <button @click="cancel(row.id, index)" type="button" class="btn btn-indigo btn-sm m-0">Cancel</button>
     </td>

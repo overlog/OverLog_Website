@@ -10,6 +10,7 @@
           <mdb-nav-item v-if="!loggedIn" href="/login" waves-fixed>Login</mdb-nav-item>
           <mdb-nav-item href="/register" waves-fixed>Register</mdb-nav-item>
           <mdb-nav-item v-if="loggedIn" href="/searchlog" waves-fixed>Search Log</mdb-nav-item>
+          <mdb-nav-item v-if="loggedIn" href="/alert" waves-fixed>Alert Alarm</mdb-nav-item>
           <button v-on:click="logout" v-if="loggedIn" href="/" waves-fixed>Logout</button>
           <!-- <span v-if="loggedIn"> | <a @click="logout">Logout</a></span>  -->
         </mdb-navbar-nav>

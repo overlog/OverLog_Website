@@ -109,7 +109,7 @@ def login():
 
     return jsonify({'token': token, 'userID': userID})
 
-@app.route('/alert', methods=['GET'])
+@app.route('/getalert', methods=['GET'])
 def getAlert():
 
     connection = engine.connect()
@@ -117,7 +117,7 @@ def getAlert():
     result = connection.execute(query)
     JSONArray = []
     for i in result:
-        JSONArray.append({"id": i[0], "type": i[1], "starttime": i[2], "endtime": i[3]})
+        JSONArray.append({"id": i[0], "type": i[1], "starttime": i[2], "endtime": i[3], "amount": i[4]})
 
     print(JSONArray)
 
@@ -132,6 +132,17 @@ def deleteAlert():
     connection.execute(query)
     return "success"
 
+@app.route('/addallert', methods=['POST'])
+def addallert():
+    logtype = "'" + request.args.get('logtype') + "'"
+    starttime = "'" + request.args.get('datetime1') + "'"
+    endtime = "'" + request.args.get('datetime2') + "'"
+    amount = "'" + request.args.get('amount') + "'"
+    print(logtype, starttime, endtime)
+    connection = engine.connect()
+    query = ("insert into alert(type, endtime, starttime, amount) values (" + logtype + "," + endtime + "," + starttime + "," + amount + ")")
+    connection.execute(query)
+    return "success"
 
 
 if __name__ == '__main__':
