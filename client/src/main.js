@@ -6,14 +6,17 @@ import Vuex from 'vuex'
 import router from './router'
 import VueApexCharts from 'vue-apexcharts'
 import store from './store'
-
+import AlertRow from "./components/AlertRow.vue";
 import Axios from 'axios'
+
 import createPersistedState from 'vuex-persistedstate'
 
 Vue.prototype.$http = Axios;
 
 Vue.use(VueApexCharts)
 Vue.use(Vuex)
+
+Vue.component('alert-row', AlertRow)
 
 Vue.config.productionTip = false
 

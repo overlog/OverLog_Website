@@ -109,6 +109,28 @@ def login():
 
     return jsonify({'token': token, 'userID': userID})
 
+@app.route('/alert', methods=['GET'])
+def getAlert():
+
+    connection = engine.connect()
+    query = ("select * from alert")
+    result = connection.execute(query)
+    JSONArray = []
+    for i in result:
+        JSONArray.append({"id": i[0], "type": i[1], "starttime": i[2], "endtime": i[3]})
+
+    print(JSONArray)
+
+    return jsonify(JSONArray)
+
+@app.route('/deletealert', methods=['POST'])
+def deleteAlert():
+    id = request.args.get('id')
+    print(id)
+    connection = engine.connect()
+    query = ("delete from alert where id = " + id )
+    connection.execute(query)
+    return "success"
 
 
 

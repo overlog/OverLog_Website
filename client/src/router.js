@@ -8,6 +8,8 @@ import Login from "./components/Login.vue";
 import Register from "./components/Register.vue";
 import Register2 from "./views/Register2.vue";
 import SearchLog from "./components/SearchLog.vue";
+import AlertAlarm from "./components/AlertAlarm.vue";
+
 
 Vue.use(Router);
 
@@ -63,6 +65,11 @@ export default new Router({
       path: "/searchlog",
       name: "searchlog",
       component: SearchLog
+    },
+    {
+      path: "/alert",
+      name: "alert",
+      component: AlertAlarm
     }
   ]
 });
