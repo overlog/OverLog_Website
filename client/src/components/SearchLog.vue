@@ -24,17 +24,16 @@
       mdbContainer
     },
     computed: {
-      ...mapState([
-        'token',
-        'userID'
-      ]),
       data() {
         return {
-
           columns: [],
           rows: []
         }
       },
+      ...mapState([
+        'token',
+        'userID'
+      ]),
     },
     methods: {
       filterData(dataArr, keys) {
@@ -51,34 +50,23 @@
       }
     },
     mounted(){
-
-      console.log(this.userID)
-      axios({ url: 'http://127.0.0.1:5000/logs/' + this.token, params: {userID: this.userID} ,method: 'GET' })
-      .then(res => res.data)
+      var url = 'http://127.0.0.1:5000/logs/' + this.token + "?userID=" + this.userID
+      fetch(url)
+      .then(res => res.json())
       .then(json => {
-        console.log(json)
-        let keys = ["date", "type"];
+        let keys = ["id", "type", "text", "date"];
         let entries = this.filterData(json, keys);
         //columns
-        this.data.columns = [
-          {
-            label: 'Name',
-            field: 'name',
-            sort: 'asc'
-          },
-          {
-            label: 'Position',
-            field: 'position',
-            sort: 'asc'
-          },
+        keys.map(key => this.data.columns.push({
+          label: key.toUpperCase(),
+          field: key,
+          sort: 'asc'
+        }));
 
-        ]
         //rows
         entries.map(entry => this.data.rows.push(entry));
       })
       .catch(err => console.log(err));
-
-
     }
   };
 </script>

@@ -78,7 +78,7 @@ def logs(token):
     result = connection.execute(query)
     JSONArray = []
     for i in result:
-        JSONArray.append({"date": i[0]})
+        JSONArray.append({"id": i[0], "date": i[3], "type": i[1], "text": i[2]})
 
     print(JSONArray)
 
