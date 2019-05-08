@@ -2,7 +2,7 @@
   <div class="homepage">
     <view-wrapper>
       <mdb-mask class="d-flex gradient justify-content-center align-items-center">
-        <mdb-container>
+        <mdb-container        v-if="!loggedIn">
           <mdb-row>
             <div class="white-text text-center text-md-left col-md-6 mt-xl-5 mb-5">
               <h1 class="h1-responsive font-weight-bold">Sign up</h1>
@@ -13,16 +13,17 @@
               </mdb-btn>
             </div>
             <mdb-col md="6" xl="5" class="mb-4">
+
               <mdb-card id="classic-card">
                 <mdb-card-body class="z-depth-2 white-text">
                   <h3 class="text-center">
                     <mdb-icon icon="user"/>Login
                   </h3>
                   <hr class="hr-light">
-                  <mdb-input label="Your email" labelColor="white" icon="envelope"/>
-                  <mdb-input label="Your password" labelColor="white" icon="lock" type="password"/>
+                  <mdb-input v-model="username" label="Your email" labelColor="white" icon="envelope"/>
+                  <mdb-input v-model="password" label="Your password" labelColor="white" icon="lock" type="password"/>
                   <div class="text-center mt-4 black-text">
-                    <mdb-btn color="indigo">Login</mdb-btn>
+                    <mdb-btn @click="login()" color="indigo">Login</mdb-btn>
                     <div class="text-center d-flex justify-content-center white-label">
                       <a class="p-2 m-2">
                         <mdb-icon fab icon="twitter" class="white-text"/>
@@ -53,6 +54,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import {
   mdbContainer,
   mdbRow,
@@ -88,7 +90,28 @@ export default {
     mdbInput,
     mdbIcon,
     mdbNavbarBrand
-  }
+  },
+  data() {
+    return {
+      username: '',
+      password: '',
+
+    }
+  },
+  computed: {
+    ...mapState([
+      'loggedIn'
+    ]),
+
+  },
+   methods: {
+      login: function(){
+        const username = this.username
+        const password = this.password
+        this.$store.dispatch('login', { username, password }).then(() => this.$router.push('/'))
+      }
+    }
+
 };
 </script>
 

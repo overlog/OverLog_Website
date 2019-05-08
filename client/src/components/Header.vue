@@ -7,16 +7,12 @@
           <mdb-nav-item to="/" waves-fixed>Home</mdb-nav-item>
           <mdb-nav-item href="/about" waves-fixed>About</mdb-nav-item>
           <mdb-nav-item href="/developers" waves-fixed>Developers</mdb-nav-item>
-          <mdb-nav-item v-if="!loggedIn" href="/login" waves-fixed>Login</mdb-nav-item>
-          <mdb-nav-item href="/register" waves-fixed>Register</mdb-nav-item>
           <mdb-nav-item v-if="loggedIn" href="/searchlog" waves-fixed>Search Log</mdb-nav-item>
           <mdb-nav-item v-if="loggedIn" href="/alert" waves-fixed>Alert Alarm</mdb-nav-item>
-          <button v-on:click="logout" v-if="loggedIn" href="/" waves-fixed>Logout</button>
+          <mdb-nav-item v-on:click="logout" v-if="loggedIn" waves-fixed>Logout2</mdb-nav-item>
+          <button v-on:click="logout" v-if="loggedIn" class="btn btn-outline-white btn-md my-2 my-sm-0 ml-3" href="/" waves-fixed >Logout</button>
           <!-- <span v-if="loggedIn"> | <a @click="logout">Logout</a></span>  -->
         </mdb-navbar-nav>
-        <mdb-form-inline>
-          <mdb-input type="text" placeholder="Search" aria-label="Search"/>
-        </mdb-form-inline>
       </mdb-navbar-toggler>
     </mdb-navbar>
   </div>
