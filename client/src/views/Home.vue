@@ -1,5 +1,5 @@
 <template>
-  <div class="classic-form-page">
+  <div class="homepage">
     <view-wrapper>
       <mdb-mask class="d-flex gradient justify-content-center align-items-center">
         <mdb-container>
@@ -8,7 +8,7 @@
               <h1 class="h1-responsive font-weight-bold">Sign up</h1>
               <hr class="hr-light">
               <h6 class="mb-4">Bazı muazzam açıklamalar.</h6>
-              <mdb-btn color="indigo" inline="white">
+              <mdb-btn color="white" inline="white">
                 <a href="register2">Sign Up!</a>
               </mdb-btn>
             </div>
@@ -23,7 +23,6 @@
                   <mdb-input label="Your password" labelColor="white" icon="lock" type="password"/>
                   <div class="text-center mt-4 black-text">
                     <mdb-btn color="indigo">Login</mdb-btn>
-                    <hr class="hr-light">
                     <div class="text-center d-flex justify-content-center white-label">
                       <a class="p-2 m-2">
                         <mdb-icon fab icon="twitter" class="white-text"/>
@@ -94,8 +93,8 @@ export default {
 </script>
 
 <style>
-.classic-form-page .view {
-  background-image: url("https://cdn.pixabay.com/photo/2016/03/09/15/14/lumber-1246545_1280.jpg");
+.homepage .view {
+  background-image: url("../assets/a.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
@@ -103,7 +102,7 @@ export default {
   margin-top: -150px;
 }
 
-.classic-form-page .gradient {
+.homepage .gradient {
   background: -webkit-linear-gradient(
     45deg,
     rgba(0, 0, 0, 0.7),
@@ -116,11 +115,11 @@ export default {
   );
 }
 
-.classic-form-page .card {
+.homepage .card {
   background-color: rgba(126, 123, 215, 0.2);
 }
 
-.classic-form-page h6 {
+.homepage h6 {
   line-height: 3;
 }
 
@@ -129,12 +128,12 @@ export default {
 }
 
 @media (max-width: 768px) {
-  .classic-form-page .navbar:not(.top-nav-collapse) {
+  .homepage .navbar:not(.top-nav-collapse) {
     background: #424f95 !important;
   }
 }
 
-.classic-form-page label {
+.homepage label {
   color: #fff !important;
 }
 </style>

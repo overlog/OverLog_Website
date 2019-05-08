@@ -1,5 +1,5 @@
 <template>
-  <div class="classic-form-page">
+  <div class="register2">
     <view-wrapper>
       <mdb-mask class="d-flex gradient justify-content-center align-items-center">
         <mdb-container>
@@ -86,3 +86,49 @@ export default {
   }
 };
 </script>
+
+<style>
+.register2 .view {
+  background-image: url("../assets/a.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  height: calc(100vh + 48px);
+  margin-top: -150px;
+}
+
+.register2 .gradient {
+  background: -webkit-linear-gradient(
+    45deg,
+    rgba(0, 0, 0, 0.7),
+    rgba(72, 15, 144, 0.4) 15%
+  );
+  background: linear-gradient(
+    45deg,
+    rgba(0, 0, 0, 0.7),
+    rgba(72, 15, 144, 0.4) 15%
+  );
+}
+
+.register2 .card {
+  background-color: rgba(126, 123, 215, 0.2);
+}
+
+.register2 h6 {
+  line-height: 3;
+}
+
+.top-nav-collapse {
+  background: #424f95 !important;
+}
+
+@media (max-width: 768px) {
+  .register2 .navbar:not(.top-nav-collapse) {
+    background: #424f95 !important;
+  }
+}
+
+.register2 label {
+  color: #fff !important;
+}
+</style>
