@@ -53,6 +53,8 @@ export default new Vuex.Store({
               commit('setLoggedIn')
               commit('setUserID', userID)
               commit('setToken', token)
+            }else{
+              alert("Wrong username or password!")
             }
             // Add the following line:
             //axios.defaults.headers.common['Authorization'] = token
