@@ -19,6 +19,7 @@ engine_connection_string = Strings.connection_string
 
 # Copy the uri of the database here!
 #engine = create_engine('postgres://wwignxrncfkuoj:42995cfd99e0913fe7385a6237401e81bd88c735c2285cb590f8c1a874a732bf@ec2-54-246-92-116.eu-west-1.compute.amazonaws.com:5432/d11mskt5lrs57u')
+#'postgres://postgres:12345@localhost:5432/overlog'
 engine = create_engine(engine_connection_string)
 
 
