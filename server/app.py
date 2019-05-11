@@ -6,6 +6,7 @@ import jwt
 from sqlalchemy.orm.exc import NoResultFound
 from functools import wraps
 import csv
+from strings import Strings
 
 app = Flask(__name__)
 CORS(app)
@@ -13,12 +14,12 @@ db = SQLAlchemy(app)
 
 app.config['SECRET_KEY'] = 'OVERLOG'
 
-
+engine_connection_string = Strings.connection_string
 # Database
 
 # Copy the uri of the database here!
 #engine = create_engine('postgres://wwignxrncfkuoj:42995cfd99e0913fe7385a6237401e81bd88c735c2285cb590f8c1a874a732bf@ec2-54-246-92-116.eu-west-1.compute.amazonaws.com:5432/d11mskt5lrs57u')
-engine = create_engine('postgres://postgres:bewelko@localhost:5432/overlog')
+engine = create_engine(engine_connection_string)
 
 
 def auth(f):
