@@ -1,6 +1,6 @@
 <template>
   <div>
-    <mdb-navbar dark color="primary" position="top" transparent>
+    <mdb-navbar dark color="black" position="top">
       <mdb-navbar-brand href="#" target="_blank">OVERLOG</mdb-navbar-brand>
       <mdb-navbar-toggler>
         <mdb-navbar-nav left>
@@ -10,7 +10,13 @@
           <mdb-nav-item v-if="loggedIn" href="/searchlog" waves-fixed>Search Log</mdb-nav-item>
           <mdb-nav-item v-if="loggedIn" href="/alert" waves-fixed>Alert Alarm</mdb-nav-item>
           <mdb-nav-item v-on:click="logout" v-if="loggedIn" waves-fixed>Logout2</mdb-nav-item>
-          <button v-on:click="logout" v-if="loggedIn" class="btn btn-outline-white btn-md my-2 my-sm-0 ml-3" href="/" waves-fixed >Logout</button>
+          <button
+            v-on:click="logout"
+            v-if="loggedIn"
+            class="btn btn-outline-white btn-md my-2 my-sm-0 ml-3"
+            href="/"
+            waves-fixed
+          >Logout</button>
           <!-- <span v-if="loggedIn"> | <a @click="logout">Logout</a></span>  -->
         </mdb-navbar-nav>
       </mdb-navbar-toggler>
@@ -19,7 +25,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState } from "vuex";
 import {
   mdbNavbar,
   mdbNavbarBrand,
@@ -42,17 +48,13 @@ export default {
     mdbInput
   },
   computed: {
-    ...mapState([
-      'loggedIn'
-    ]),
-
+    ...mapState(["loggedIn"])
   },
   methods: {
-    logout: function(){
-      this.$store.dispatch('logout').then(() => this.$router.push('/'))
+    logout: function() {
+      this.$store.dispatch("logout").then(() => this.$router.push("/"));
     }
   }
-
 };
 </script>
 
