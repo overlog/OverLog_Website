@@ -6,6 +6,7 @@ import jwt
 from sqlalchemy.orm.exc import NoResultFound
 from functools import wraps
 import csv
+from strings import Strings
 
 app = Flask(__name__)
 CORS(app)
@@ -13,7 +14,7 @@ db = SQLAlchemy(app)
 
 app.config['SECRET_KEY'] = 'OVERLOG'
 
-
+engine_connection_string = Strings.connection_string
 # Database
 
 # Copy the uri of the database here!
