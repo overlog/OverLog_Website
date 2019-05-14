@@ -1,6 +1,15 @@
 <template>
   <div align="center" class="example">
-    <mdb-btn-group>
+    <date-picker
+      v-model="endDate"
+      lang="english"
+      placeholder="Select Date Time"
+      type="datetime"
+      format="YYYY-MM-DD HH:mm:ss a"
+      width="10%"
+      @change="updateChart()"
+    ></date-picker>&nbsp;&nbsp;
+    <mdb-btn-group width="10%">
       <mdb-btn v-if="xinterval=='1h'" @click="setXinterval('1h')" color="info" darkWaves>1H</mdb-btn>
       <mdb-btn @click="setXinterval('1h')" outline="mdb-color" v-else darkWaves>1H</mdb-btn>
 
@@ -21,8 +30,7 @@
 
       <mdb-btn v-if="xinterval=='1y'" @click="setXinterval('1y')" color="info" darkWaves>1Y</mdb-btn>
       <mdb-btn v-else @click="setXinterval('1y')" outline="mdb-color" darkWaves>1Y</mdb-btn>
-    </mdb-btn-group>
-
+    </mdb-btn-group>&nbsp;&nbsp;
     <select
       outline="mdb-color"
       @change="updateChart()"
@@ -46,6 +54,7 @@
 </template>
 
 <script>
+import DatePicker from "vue2-datepicker";
 import { mapState } from "vuex";
 import {
   mdbBtn,
@@ -68,10 +77,14 @@ export default {
     mdbDropdownItem,
     mdbDropdownMenu,
     mdbDropdownToggle,
-    mdbSelect
+    mdbSelect,
+    DatePicker
   },
   data: function() {
     return {
+      endDate: function(){
+        return new Date();
+      },
       logs: {},
       datainterval: "1h",
       xinterval: "1d",
@@ -94,6 +107,10 @@ export default {
     };
   },
   computed: {
+    endDate: function() {
+      return new Date();
+    },
+
     mins: function() {
       if (this.xinterval == "1h") {
         return true;
@@ -250,7 +267,7 @@ export default {
     updateChart() {
       var endDate = new Date();
       endDate = new Date(
-        endDate.getTime() - endDate.getTimezoneOffset() * 60 * 1000
+        this.endDate.getTime() - this.endDate.getTimezoneOffset() * 60 * 1000
       );
       if (this.xinterval == "1h") {
         var substraction = 60 * 60 * 1000;
