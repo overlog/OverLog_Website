@@ -49,7 +49,7 @@ def hello_world(): #write weather datas to database
     connection = engine.connect()
     ##
 
-    with open('/home/konik/Desktop/weatherHistory.csv', mode='r') as csv_file:
+    with open('C:/Users/Ali/Desktop/weatherHistory.csv', mode='r') as csv_file:
         csv_reader = csv.DictReader(csv_file)
         line_count = 0
         for row in csv_reader:

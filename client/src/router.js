@@ -6,10 +6,8 @@ import LineChart from "./components/LineChart.vue";
 import Developers from "./components/Developers.vue";
 import Login from "./components/Login.vue";
 import Register from "./components/Register.vue";
-import Register2 from "./views/Register2.vue";
 import SearchLog from "./components/SearchLog.vue";
 import AlertAlarm from "./components/AlertAlarm.vue";
-
 
 Vue.use(Router);
 
@@ -55,11 +53,6 @@ export default new Router({
       path: "/register",
       name: "register",
       component: Register
-    },
-    {
-      path: "/register2",
-      name: "register2",
-      component: Register2
     },
     {
       path: "/searchlog",
