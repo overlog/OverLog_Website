@@ -53,18 +53,19 @@ def hello_world(): #write weather datas to database
         csv_reader = csv.DictReader(csv_file)
         line_count = 0
         for row in csv_reader:
-            if line_count == 0:
-                print(f'Column names are {", ".join(row)}')
-                line_count += 1
-            elif line_count == 100: #how many lines will write to database
-                break
-            date = "'" + row["Formatted Date"] + "'"
-            type = "'" + row["Precip Type"] + "'"
-            text = "'" + row["Summary"] + "'"
+            if line_count > 46365:
+                if line_count == 0:
+                    print(f'Column names are {", ".join(row)}')
+                    line_count += 1
+                elif line_count == 47000: #how many lines will write to database
+                    break
+                date = "'" + row["Formatted Date"] + "'"
+                type = "'" + row["Precip Type"] + "'"
+                text = "'" + row["Summary"] + "'"
 
-            query = ("insert into log(type, text, userID, date) values(" + type + ", " + text + ", 1, " + date +")")
-            connection.execute(query)
-            #print(f'\t{row["Summary"]} ')
+                query = ("insert into log(type, text, userID, date) values(" + type + ", " + text + ", 1, " + date +")")
+                connection.execute(query)
+                #print(f'\t{row["Summary"]} ')
             line_count += 1
     return "success"
 

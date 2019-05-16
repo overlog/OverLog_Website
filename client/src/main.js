@@ -15,6 +15,7 @@ import Developers from "./components/Developers.vue";
 import Login from "./components/Login.vue";
 import Dashboard from "./components/Dashboard.vue";
 import BoxPlot from "./components/BoxPlot.vue";
+import PieChart from "./components/PieChart.vue";
 
 import createPersistedState from "vuex-persistedstate";
 
@@ -35,6 +36,7 @@ Vue.component("developers", Developers);
 Vue.component("login", Login);
 Vue.component("dashboard", Dashboard);
 Vue.component("box-plot", BoxPlot);
+Vue.component("pie-chart", PieChart);
 
 Vue.config.productionTip = false;
 

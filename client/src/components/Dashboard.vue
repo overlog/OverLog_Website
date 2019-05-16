@@ -124,11 +124,7 @@
           <mdb-col md="3" class="mb-4">
             <mdb-card class="mb-4">
               <mdb-card-header class="text-center">Pie chart</mdb-card-header>
-              <mdb-card-body>
-                <div style="display: block">
-                  <mdb-pie-chart :data="pieChartData" :options="pieChartOptions" :height="200"/>
-                </div>
-              </mdb-card-body>
+              <pie-chart></pie-chart>
             </mdb-card>
           </mdb-col>
         </mdb-row>
