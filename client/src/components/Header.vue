@@ -5,10 +5,6 @@
       <mdb-navbar-toggler>
         <mdb-navbar-nav left>
           <mdb-nav-item to="/" waves-fixed>Home</mdb-nav-item>
-          <mdb-nav-item href="/about" waves-fixed>About</mdb-nav-item>
-          <mdb-nav-item href="/developers" waves-fixed>Developers</mdb-nav-item>
-          <mdb-nav-item v-if="loggedIn" href="/searchlog" waves-fixed>Search Log</mdb-nav-item>
-          <mdb-nav-item v-if="loggedIn" href="/alert" waves-fixed>Alert Alarm</mdb-nav-item>
         </mdb-navbar-nav>
         <mdb-navbar-nav right>
           <button
