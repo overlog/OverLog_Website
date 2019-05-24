@@ -8,9 +8,7 @@
               <h1 class="h1-responsive font-weight-bold">Sign up</h1>
               <hr class="hr-light">
               <h6 class="mb-4">Bazı muazzam açıklamalar.</h6>
-              <mdb-btn color="white" inline="white">
-                <a href="register">Sign Up!</a>
-              </mdb-btn>
+              <a href="register" type="button" class="btn btn-indigo">Sign Up</a>
             </div>
             <mdb-col md="6" xl="5" class="mb-4">
               <mdb-card id="classic-card">

@@ -43,7 +43,7 @@ def auth(f):
     return wrapper
 
 
-
+'''
 @app.route('/')
 def hello_world(): #write weather datas to database
     connection = engine.connect()
@@ -69,7 +69,7 @@ def hello_world(): #write weather datas to database
             line_count += 1
     return "success"
 
-
+'''
 
 @app.route('/logs/<token>')
 @auth

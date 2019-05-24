@@ -1,112 +1,10 @@
 <template>
   <div class="dashboard">
+
     <section>
       <section class="mt-lg-5">
         <mdb-row>
-          <mdb-col xl="3" md="6" class="mb-r">
-            <mdb-card cascade class="cascading-admin-card">
-              <div class="admin-up">
-                <mdb-icon icon="money-bill-alt" far class="primary-color"/>
-                <div class="data">
-                  <p>SALES</p>
-                  <h4>
-                    <strong>$2000</strong>
-                  </h4>
-                </div>
-              </div>
-              <mdb-card-body>
-                <div class="progress">
-                  <div
-                    aria-valuemax="100"
-                    aria-valuemin="0"
-                    aria-valuenow="25"
-                    class="progress-bar bg-primary"
-                    role="progressbar"
-                    style="width: 25%"
-                  ></div>
-                </div>
-                <mdb-card-text>Better than last week (25%)</mdb-card-text>
-              </mdb-card-body>
-            </mdb-card>
-          </mdb-col>
-          <mdb-col xl="3" md="6" class="mb-r">
-            <mdb-card cascade class="cascading-admin-card">
-              <div class="admin-up">
-                <mdb-icon icon="line-chart" class="warning-color"/>
-                <div class="data">
-                  <p>SUBSCRIPTIONS</p>
-                  <h4>
-                    <strong>200</strong>
-                  </h4>
-                </div>
-              </div>
-              <mdb-card-body>
-                <div class="progress">
-                  <div
-                    aria-valuemax="100"
-                    aria-valuemin="0"
-                    aria-valuenow="25"
-                    class="progress-bar bg grey darken-2"
-                    role="progressbar"
-                    style="width: 25%"
-                  ></div>
-                </div>
-                <mdb-card-text>Worse than last week (25%)</mdb-card-text>
-              </mdb-card-body>
-            </mdb-card>
-          </mdb-col>
-          <mdb-col xl="3" md="6" class="mb-r">
-            <mdb-card cascade class="cascading-admin-card">
-              <div class="admin-up">
-                <mdb-icon icon="pie-chart" class="light-blue lighten-1"/>
-                <div class="data">
-                  <p>TRAFFIC</p>
-                  <h4>
-                    <strong>20000</strong>
-                  </h4>
-                </div>
-              </div>
-              <mdb-card-body>
-                <div class="progress">
-                  <div
-                    aria-valuemax="100"
-                    aria-valuemin="0"
-                    aria-valuenow="75"
-                    class="progress-bar grey darken-2"
-                    role="progressbar"
-                    style="width: 75%"
-                  ></div>
-                </div>
-                <mdb-card-text>Worse than last week (75%)</mdb-card-text>
-              </mdb-card-body>
-            </mdb-card>
-          </mdb-col>
-          <mdb-col xl="3" md="6" class="mb-r">
-            <mdb-card cascade class="cascading-admin-card">
-              <div class="admin-up">
-                <mdb-icon icon="bar-chart" class="red accent-2"/>
-                <div class="data">
-                  <p>ORGANIC TRAFFIC</p>
-                  <h4>
-                    <strong>2000</strong>
-                  </h4>
-                </div>
-              </div>
-              <mdb-card-body>
-                <div class="progress">
-                  <div
-                    aria-valuemax="100"
-                    aria-valuemin="0"
-                    aria-valuenow="25"
-                    class="progress-bar bg-primary"
-                    role="progressbar"
-                    style="width: 25%"
-                  ></div>
-                </div>
-                <mdb-card-text>Better than last week (25%)</mdb-card-text>
-              </mdb-card-body>
-            </mdb-card>
-          </mdb-col>
+          <card v-for="c in cardRes" :res="c" v-bind:key="c.id"></card>
         </mdb-row>
       </section>
       <section>
@@ -123,28 +21,17 @@
           </mdb-col>
         </mdb-row>
       </section>
-      <section>
-        <mdb-row class="mt-5">
+
+      <div >
+      <section >
+        <mdb-row class="mt-5" >
           <mdb-col md="3" class="mb-4">
             <mdb-card class="mb-4">
               <mdb-card-header class="text-center">Pie chart</mdb-card-header>
-              <pie-chart></pie-chart>
+              <pie-chart ></pie-chart>
             </mdb-card>
           </mdb-col>
-          <mdb-col md="4" class="mb-4">
-            <mdb-card class="mb-4">
-              <mdb-card-header>Radar chart</mdb-card-header>
-              <mdb-card-body>
-                <div style="display: block">
-                  <mdb-radar-chart
-                    :data="radarChartData"
-                    :options="radarChartOptions"
-                    :height="300"
-                  />
-                </div>
-              </mdb-card-body>
-            </mdb-card>
-          </mdb-col>
+ 
           <mdb-col md="5" class="mb-4">
             <mdb-card-header>Bar Chart</mdb-card-header>
             <mdb-card>
@@ -157,6 +44,8 @@
           </mdb-col>
         </mdb-row>
       </section>
+      </div>
+
       <section>
         <mdb-row class="mt-5">
           <mdb-col>
@@ -190,6 +79,7 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
 import {
   mdbRow,
   mdbCol,
@@ -212,8 +102,16 @@ import {
   mdbModalHeader,
   mdbModalTitle,
   mdbModalBody,
-  mdbModalFooter
+  mdbModalFooter,
+  mdbMultiCarousel,
+  mdbCarouselItem,
+  mdbContainer,
+
+  mdbCardImage,
+  mdbCardTitle,
+
 } from "mdbvue";
+import { error } from "util";
 export default {
   name: "Dashboard",
   components: {
@@ -238,10 +136,24 @@ export default {
     mdbModalHeader,
     mdbModalTitle,
     mdbModalBody,
-    mdbModalFooter
+    mdbModalFooter,
+    mdbMultiCarousel,
+    mdbCarouselItem,
+    mdbContainer,
+    mdbRow,
+    mdbCol,
+    mdbCard,
+    mdbCardImage,
+    mdbCardBody,
+    mdbCardTitle,
+    mdbCardText
+ 
   },
   data() {
     return {
+      res: {},
+      cardRes: [],
+      error: 0,
       showFrameModalTop: false,
       showFrameModalBottom: false,
       showSideModalTopRight: false,
@@ -255,60 +167,104 @@ export default {
       showFluidModalRight: false,
       showFluidModalLeft: false,
       showFluidModalTop: false,
-      showFluidModalBottom: false,
-      pieChartData: {
-        labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
-        datasets: [
-          {
-            data: [300, 50, 100, 40, 120, 24, 52],
-            backgroundColor: [
-              "#F7464A",
-              "#46BFBD",
-              "#FDB45C",
-              "#949FB1",
-              "#4D5360",
-              "#ac64ad"
-            ],
-            hoverBackgroundColor: [
-              "#FF5A5E",
-              "#5AD3D1",
-              "#FFC870",
-              "#A8B3C5",
-              "#616774",
-              "#da92db"
-            ]
-          }
-        ]
-      },
-      pieChartOptions: {
-        responsive: true,
-        maintainAspectRatio: false
-      },
-      radarChartData: {
-        labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
-        datasets: [
-          {
-            label: "#1",
-            backgroundColor: "rgba(245, 74, 85, 0.5)",
-            data: [65, 59, 80, 81, 56, 55, 40]
-          },
-          {
-            label: "#2",
-            backgroundColor: "rgba(90, 173, 246, 0.5)",
-            data: [12, 42, 121, 56, 24, 12, 2]
-          },
-          {
-            label: "#3",
-            backgroundColor: "rgba(245, 192, 50, 0.5)",
-            data: [2, 123, 154, 76, 54, 23, 5]
-          }
-        ]
-      },
-      radarChartOptions: {
-        responsive: true,
-        maintainAspectRatio: false
-      }
+      showFluidModalBottom: false
     };
+  },
+
+  computed: {
+    data() {
+      return {
+        columns: [],
+        rows: []
+      };
+    },
+    ...mapState(["token", "userID"])
+  },
+
+  mounted() {
+    var url =
+      "http://127.0.0.1:5000/logs/" + this.token + "?userID=" + this.userID;
+    fetch(url)
+      .then(res => res.json())
+      .then(json => {
+        this.res = json;
+        this.cards(json);
+      });
+  },
+
+  methods: {
+    cards(res) {
+      var types = [];
+      var datas = [];
+      res.map(entry => {
+        if (!types.includes(entry["type"])) {
+          types.push(entry["type"]);
+          datas.push([]);
+        }
+      });
+
+      var len = Object.keys(res).length;
+      console.log(res[0]["type"]);
+
+      for (var j = 0; j < len; j++) {
+        datas[types.indexOf(res[j]["type"])].push(res[j]);
+      }
+
+      this.cardRes = datas;
+    }
+  },
+
+  pieChartData: {
+    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
+    datasets: [
+      {
+        data: [300, 50, 100, 40, 120, 24, 52],
+        backgroundColor: [
+          "#F7464A",
+          "#46BFBD",
+          "#FDB45C",
+          "#949FB1",
+          "#4D5360",
+          "#ac64ad"
+        ],
+        hoverBackgroundColor: [
+          "#FF5A5E",
+          "#5AD3D1",
+          "#FFC870",
+          "#A8B3C5",
+          "#616774",
+          "#da92db"
+        ]
+      }
+    ]
+  },
+  pieChartOptions: {
+    responsive: true,
+    maintainAspectRatio: false
+  },
+  radarChartData: {
+    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
+    datasets: [
+      {
+        label: "#1",
+        backgroundColor: "rgba(245, 74, 85, 0.5)",
+        data: [65, 59, 80, 81, 56, 55, 40]
+      },
+      {
+        label: "#2",
+        backgroundColor: "rgba(90, 173, 246, 0.5)",
+        data: [12, 42, 121, 56, 24, 12, 2]
+      },
+      {
+        label: "#3",
+        backgroundColor: "rgba(245, 192, 50, 0.5)",
+        data: [2, 123, 154, 76, 54, 23, 5]
+      }
+    ]
+  },
+  radarChartOptions: {
+    responsive: true,
+    maintainAspectRatio: false
   }
 };
 </script>
@@ -354,4 +310,10 @@ export default {
 .classic-admin-card .card-body h4 {
   margin-top: 10px;
 }
+
+.flex-container {
+  align-items: center;
+}
 </style>
+
+
